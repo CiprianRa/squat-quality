@@ -6,3 +6,4 @@ __pycache__/
 *.json
 data/
 models/
+videos_frame_invalid/
