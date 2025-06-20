@@ -7,3 +7,5 @@ __pycache__/
 data/
 models/
 videos_frame_invalid/
+data_interpolated/
+data_augmented/
