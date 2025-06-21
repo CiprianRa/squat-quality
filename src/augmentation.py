@@ -17,7 +17,7 @@ def rotate_skeleton(coords, angle_deg):
 
 def flip_skeleton(coords):
     coords = coords.reshape(-1, 2)
-    coords[:, 0] *= -1  # Inversăm axa X
+    coords[:, 0] *= -1
     return coords.flatten()
 
 def add_noise(coords, std=0.01):
@@ -35,12 +35,11 @@ def augment_row(coords, aug_type):
         return add_noise(coords)
     return coords
 
-def process_file(csv_path, label_folder, filename_base, file_index):
+def process_file(csv_path, label_folder, filename_base):
     df = pd.read_csv(csv_path)
     if df.empty or len(df.columns) < 3:
         return
 
-    # Separăm coloanele: frame, coordonate, features finale
     coord_cols = [col for col in df.columns if '_x' in col or '_y' in col]
     meta_cols = [col for col in df.columns if col not in coord_cols and col != "frame"]
 
@@ -58,7 +57,7 @@ def process_file(csv_path, label_folder, filename_base, file_index):
         out_dir = output_root / label_folder
         out_dir.mkdir(parents=True, exist_ok=True)
 
-        output_name = f"{filename_base}_aug_{file_index}_{i}.csv"
+        output_name = f"{filename_base}_aug_{i}.csv"
         df_aug.to_csv(out_dir / output_name, index=False, float_format="%.4f")
         print(f"Salvat: {out_dir / output_name}")
 
@@ -67,19 +66,11 @@ def run_augmentation():
         if not label_dir.is_dir():
             continue
         for csv_file in label_dir.glob("*.csv"):
-            stem = csv_file.stem  # ex: corect_001
-            parts = stem.split("_")
-            if len(parts) < 2:
-                print(f"Nume nevalid: {csv_file.name}")
-                continue
-            base_name = "_".join(parts[:-1])  # ex: corect
-            index = parts[-1]                 # ex: 001
-
+            filename_base = csv_file.stem  # ex: calcaie_002_seq1
             process_file(
                 csv_path=csv_file,
                 label_folder=label_dir.name,
-                filename_base=base_name,
-                file_index=index
+                filename_base=filename_base
             )
 
 if __name__ == "__main__":

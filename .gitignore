@@ -9,3 +9,11 @@ models/
 videos_frame_invalid/
 data_interpolated/
 data_augmented/
+videos/
+notebooks/
+src/model_bilstm_attention.py
+src/skeleton_sequence.py
+src/train_and_eval.py
+src/train_files.txt
+src/test_files.txt
+src/val_files.txt
