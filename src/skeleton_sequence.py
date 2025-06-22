@@ -10,7 +10,7 @@ class SkeletonSequenceDataset(Dataset):
         with open(file_list_path, "r") as f:
             self.file_paths = [line.strip() for line in f if line.strip()]
 
-        # Eticheta este folderul imediat următor după root (ex: calcaie)
+        # Eticheta este folderul imediat urmator dupa root (ex: calcaie)
         self.labels = [Path(path).parts[1] for path in self.file_paths]
         self.label_to_idx = label_map or {label: idx for idx, label in enumerate(sorted(set(self.labels)))}
         self.idx_to_label = {v: k for k, v in self.label_to_idx.items()}

@@ -17,11 +17,11 @@ def interpolate_csv_to_fixed_frames(df, target_frames=60):
         df_new.insert(0, "frame", np.arange(target_frames))
         return df_new
 
-    # Dacă avem 0 frame-uri → ignorăm
+    # Dacă avem 0 frame-uri → ignoram
     if len(current_frames) < 1:
         return None
 
-    # Interpolare normală
+    # Interpolare normala
     interpolated = []
     new_frames = np.linspace(current_frames[0], current_frames[-1], num=target_frames)
 
@@ -46,7 +46,7 @@ def process_all_csvs():
                     print(f"Sărit (fără date): {csv_file}")
                     continue
 
-                # Construiește aceeași structură în output
+                # Construieste aceeasi structura in output
                 relative_folder = label_dir.name
                 out_dir = output_root / relative_folder
                 out_dir.mkdir(parents=True, exist_ok=True)
@@ -56,7 +56,7 @@ def process_all_csvs():
                 print(f"Salvat: {output_path}")
 
             except Exception as e:
-                print(f"Eroare la fișierul {csv_file}: {e}")
+                print(f"Eroare la fisierul {csv_file}: {e}")
 
 if __name__ == "__main__":
     process_all_csvs()

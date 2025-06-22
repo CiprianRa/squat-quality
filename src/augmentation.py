@@ -66,7 +66,7 @@ def run_augmentation():
         if not label_dir.is_dir():
             continue
         for csv_file in label_dir.glob("*.csv"):
-            filename_base = csv_file.stem  # ex: calcaie_002_seq1
+            filename_base = csv_file.stem
             process_file(
                 csv_path=csv_file,
                 label_folder=label_dir.name,

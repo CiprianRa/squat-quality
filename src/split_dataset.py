@@ -15,7 +15,7 @@ split_ratios = {
 
 def get_video_id(file_name: Path):
     """
-    Extrage partea care identifică video-ul original, ex: calcaie_001
+    Extrage partea care identifica video-ul original, ex: calcaie_001
     """
     stem = file_name.stem
     parts = stem.split("_")
@@ -57,7 +57,7 @@ def split_and_save(grouped_files):
             for vid in video_id_list:
                 for path in grouped_files[vid]:
                     f.write(f"{path}\n")
-        print(f"Scris: {filename} ({len(video_id_list)} video-uri → {sum(len(grouped_files[v]) for v in video_id_list)} fișiere)")
+        print(f"Scris: {filename} ({len(video_id_list)} video-uri → {sum(len(grouped_files[v]) for v in video_id_list)} fisiere)")
 
 if __name__ == "__main__":
     grouped = collect_files_grouped_by_video()

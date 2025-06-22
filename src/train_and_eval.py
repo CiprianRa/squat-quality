@@ -47,7 +47,7 @@ best_f1 = 0.0
 best_model_state = None
 
 print(f"\nEtichete detectate: {train_dataset.label_to_idx}")
-print("\n===== Încep antrenarea =====")
+print("\n===== Incep antrenarea =====")
 for epoch in range(1, EPOCHS + 1):
     model.train()
     total_loss = 0
@@ -88,7 +88,7 @@ for epoch in range(1, EPOCHS + 1):
     print(f"Epoca {epoch:02d} | Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f} | Val F1: {val_f1:.4f}")
 
 # ===== Test final =====
-print("\n===== Evaluare finală pe TEST =====")
+print("\n===== Evaluare finala pe TEST =====")
 model.load_state_dict(best_model_state)
 model.eval()
 test_loss = 0
@@ -115,12 +115,12 @@ print(f"Test Loss: {avg_test_loss:.4f} | Test Accuracy: {test_acc:.2f}%")
 
 # === Salvare model antrenat ===
 torch.save(model.state_dict(),"../models/model_bilstm_attention.pt")
-print("Model salvat în 'model_bilstm_attention.pt'")
+print("Model salvat in 'model_bilstm_attention.pt'")
 
 # === Salvare dictionar etichete → index ===
 with open("../models/label_to_idx.json", "w") as f:
     json.dump(train_dataset.label_to_idx, f, indent=2)
-print("Etichete salvate în 'label_to_idx.json'")
+print("Etichete salvate in 'label_to_idx.json'")
 
 # Confusion matrix
 cm = confusion_matrix(all_targets, all_preds)
