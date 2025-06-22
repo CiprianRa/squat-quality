@@ -4,8 +4,8 @@ from collections import defaultdict
 
 random.seed(42)
 
-input_dirs = [Path("../data_interpolated"), Path("../data_augmented")]
-output_dir = Path(".")
+input_dirs = [Path("../data/data_interpolated"), Path("../data/data_augmented")]
+output_dir = Path("../data")
 
 split_ratios = {
     "train": 0.7,

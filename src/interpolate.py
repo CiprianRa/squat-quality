@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
-input_root = Path("../data")
-output_root = Path("../data_interpolated")
+input_root = Path("../data/raw/data_extracted")
+output_root = Path("../data/data_interpolated")
 target_frames = 60
 
 def interpolate_csv_to_fixed_frames(df, target_frames=60):

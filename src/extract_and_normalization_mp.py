@@ -8,8 +8,8 @@ import gc
 
 mp_pose = mp.solutions.pose
 
-input_root = Path("../videos")
-output_root = Path("../data")
+input_root = Path("../data/raw/videos")
+output_root = Path("../data/raw/data_extracted")
 
 KEYPOINT_NAMES = {
     "LEFT_HIP": 23, "RIGHT_HIP": 24,

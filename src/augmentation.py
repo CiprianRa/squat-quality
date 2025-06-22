@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
-input_root = Path("../data_interpolated")
-output_root = Path("../data_augmented")
+input_root = Path("../data/data_interpolated")
+output_root = Path("../data/data_augmented")
 
 def rotate_skeleton(coords, angle_deg):
     theta = np.deg2rad(angle_deg)
